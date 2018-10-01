@@ -19,6 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKUIDelegate, WKNavigationDe
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         window.level = .screenSaver + 1
+        window.isOpaque = false
+        window.backgroundColor = NSColor.clear
         window.delegate = self
         styleMask = window.styleMask
         
@@ -27,7 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKUIDelegate, WKNavigationDe
         
         webView.uiDelegate = self
         webView.navigationDelegate = self
-        webView.load(URLRequest(url: URL(string:"https://www.google.com")!))
+        webView.setValue(false, forKey: "drawsBackground")
+        webView.load(URLRequest(url: URL(string:"https://reactions.live")!))
     }
 
     @objc func open() {
@@ -49,11 +52,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKUIDelegate, WKNavigationDe
         }
     }
 
-    func windowDidBecomeKey(_ notification: Notification) {
+    func windowDidBecomeMain(_ notification: Notification) {
         window.styleMask = styleMask
     }
     
-    func windowDidResignKey(_ notification: Notification) {
+    func windowDidResignMain(_ notification: Notification) {
         window.styleMask = .borderless
     }
     
