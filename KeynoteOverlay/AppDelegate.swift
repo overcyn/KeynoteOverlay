@@ -22,6 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKUIDelegate, WKNavigationDe
         window.isOpaque = false
         window.backgroundColor = NSColor.clear
         window.delegate = self
+        window.hasShadow = false
         styleMask = window.styleMask
         
         openItem.target = self
